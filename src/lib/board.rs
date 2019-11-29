@@ -1,9 +1,9 @@
 use itertools::Itertools;
 use std::collections::HashMap;
 
-use crate::coordinates::Coordinates;
-use crate::game::Game;
-use crate::player::Player;
+use crate::lib::coordinates::Coordinates;
+use crate::lib::game::Game;
+use crate::lib::player::Player;
 
 #[derive(PartialEq, Eq, Clone)]
 pub struct Board {

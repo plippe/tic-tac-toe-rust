@@ -1,17 +1,13 @@
 use std::io;
 use std::str::FromStr;
 
-mod board;
-mod coordinates;
-mod game;
-mod player;
-mod state;
+mod lib;
 
-use crate::board::Board;
-use crate::coordinates::Coordinates;
-use crate::game::Game;
-use crate::player::Player;
-use crate::state::State;
+use crate::lib::board::Board;
+use crate::lib::coordinates::Coordinates;
+use crate::lib::game::Game;
+use crate::lib::player::Player;
+use crate::lib::state::State;
 
 fn start_game(game: &Game) -> State {
     State::NextTurn(Player::first(), Board::new(game))
