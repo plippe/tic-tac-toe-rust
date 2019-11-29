@@ -1,5 +1,5 @@
-use crate::board::Board;
-use crate::player::Player;
+use crate::lib::board::Board;
+use crate::lib::player::Player;
 
 #[derive(PartialEq, Eq, Clone)]
 pub enum State {
