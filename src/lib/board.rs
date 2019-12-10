@@ -73,10 +73,10 @@ impl Board {
                 .zip_eq(ys.clone().rev())
                 .collect::<Vec<(i8, i8)>>(),
         ]
-        .iter()
+        .into_iter()
         .map(|row| {
-            row.iter()
-                .map(|&(x, y)| Coordinates { x, y })
+            row.into_iter()
+                .map(|(x, y)| Coordinates { x, y })
                 .filter(|coordinates| self.on_board(coordinates))
                 .collect::<Vec<Coordinates>>()
         })
@@ -87,7 +87,7 @@ impl Board {
 
     pub fn is_winning_move(&self, coordinates: &Coordinates, goal: i8) -> bool {
         self.affected_rows(coordinates)
-            .iter()
+            .into_iter()
             .flat_map(|row| {
                 row.windows(goal as usize)
                     .map(|window| window.to_vec())
@@ -106,7 +106,7 @@ impl Board {
 impl ToString for Board {
     fn to_string(&self) -> String {
         let cell_size = vec![self.min_x, self.max_x, self.min_y, self.max_y]
-            .iter()
+            .into_iter()
             .map(|s| s.to_string().len())
             .max()
             .unwrap()
