@@ -16,7 +16,7 @@ fn start_game(game: &Game) -> State {
 fn next_turn(game: &Game, player: &Player, board: &Board) -> State {
     println!("Player {:?}'s turn", player);
     println!("{}", board.to_string());
-    println!("");
+    println!();
     println!("Where would you like to play ?");
     read_input::<Coordinates>()
         .and_then(|coordinates| {
@@ -36,9 +36,10 @@ fn next_turn(game: &Game, player: &Player, board: &Board) -> State {
         .unwrap_or_else(|e| {
             println!("Error: {}", e);
             println!("Try again ?");
-            match read_input::<bool>().unwrap_or(false) {
-                true => State::NextTurn(player.clone(), board.clone()),
-                false => State::EndGame,
+            if read_input::<bool>().unwrap_or(false) {
+                State::NextTurn(player.clone(), board.clone())
+            } else {
+                State::EndGame
             }
         })
 }
