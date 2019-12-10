@@ -24,7 +24,7 @@ impl FromStr for Coordinates {
                 }
             })
             .map(|(x, y)| Coordinates { x, y })
-            .ok_or("Coordinates can't be parsed".to_string())
+            .ok_or_else(|| "Coordinates can't be parsed".to_string())
     }
 }
 
