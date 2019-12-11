@@ -16,6 +16,7 @@ impl Game {
         goal: 3,
     };
 
+    #[allow(dead_code)]
     pub const GOMOKU: Game = Game {
         min_x: -7,
         max_x: 7,
